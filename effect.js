@@ -201,11 +201,37 @@ $('#gift_button').click(function(){
   // Universal Yes button click logic (moves every click until 11th)
 let yesTapCount = 0;
 
+
+const yesColors = [
+  "#e74c3c",
+  "#f39c12",
+  "#f1c40f",
+  "#2ecc71",
+  "#1abc9c",
+  "#3498db",
+  "#9b59b6",
+  "#e67e22",
+  "#d35400",
+  "#c0392b"
+];
+
 $('#yes_btn').on('click', function(){
   yesTapCount++;
 
   if (yesTapCount < 11) {
-    // First 10 clicks: move to random position
+    // Shrink progressively
+    const scaleValue = 1 - (yesTapCount * 0.07);
+
+    // Change background color
+    const newColor = yesColors[yesTapCount - 1] || "#555";
+
+    $(this).css({
+      transform: `scale(${scaleValue})`,
+      backgroundColor: newColor,
+      color: "white"
+    });
+
+    // Random position
     const containerWidth = $(window).width() - $(this).outerWidth();
     const containerHeight = $(window).height() - $(this).outerHeight();
     const randX = Math.floor(Math.random() * containerWidth);
@@ -218,16 +244,18 @@ $('#yes_btn').on('click', function(){
     });
   }
   else if (yesTapCount === 11) {
-    // 11th click: grow big and stop moving
+    // Grow big and final color
     $(this).css({
       position: 'static',
-      transform: 'scale(1.5)',
+      transform: 'scale(2)',
       fontSize: '1.5em',
+      backgroundColor: '#00c853',
+      color: 'white',
       left: '',
       top: ''
     });
 
-    // Remove this click handler
+    // Remove old click handler
     $(this).off('click');
 
     // Bind final click to show gifts
@@ -237,6 +265,8 @@ $('#yes_btn').on('click', function(){
     });
   }
 });
+
+
 $('#no_btn').click(function(){
     $('#gift_container').html(`
       <div id="no_response">
@@ -263,9 +293,9 @@ $('.gift-box').click(function(){
     macbook: '💻 MacBook Pro!',
     samsung: '📱 Samsung S25 Ultra!',
     audi: '🚘 Audi Car!',
-    laptop: '💻 Powerful Laptop!',
+    laptop: '💻 Laptop!',
     burj: '🏙️ Burj Khalifa!',
-    taj: '🕌 Taj Mahal Trip!'
+    taj: '🕌 Taj Mahal!'
   };
   const selectedGift = $(this).data('gift');
   $('#gift_boxes').hide();
