@@ -1469,24 +1469,24 @@
 /* Style for the video overlay */
 .cake-cut-video {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center horizontally & vertically */
 
-    object-fit: cover; /* Fills the screen without distortion */
+    width: 90vmin;       /* Responsive square based on smaller dimension */
+    height: 90vmin;
+    max-width: 500px;
+    max-height: 500px;
+
+    object-fit: cover;
+    border-radius: 30px;
+    background-color: black;
+
     z-index: 999;
     display: none;
 
-    background-color: black; /* Prevents white flashes on load */
-    border-radius: 0; /* No rounding for fullscreen */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
-
-.cake-cut-video.zoomed {
-	transform: scale(1.2);           /* 👈 Zoom effect */
-	transform-origin: center center; /* Keep zoom centered */
-  }
-
 
 
 @media (max-width: 600px) {
