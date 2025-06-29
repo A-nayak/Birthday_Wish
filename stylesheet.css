@@ -1469,13 +1469,17 @@
 /* Style for the video overlay */
 .cake-cut-video {
     position: fixed;
-    inset: 0;
-    margin: auto;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* fills whole screen */
+
+    object-fit: cover; /* Fills the screen without distortion */
     z-index: 999;
     display: none;
+
+    background-color: black; /* Prevents white flashes on load */
+    border-radius: 0; /* No rounding for fullscreen */
 }
 
 .cake-cut-video.zoomed {
