@@ -182,10 +182,107 @@ $('document').ready(function(){
         // Show birthday text
         setTimeout(function () {
           $('#birthday-text-wrapper').fadeIn('slow');
+          $('#gift_button').fadeIn('slow'); 
         }, 600);
       });
       
-      
+      // GIFT BUTTON CLICK HANDLER
+$('#gift_button').click(function(){
+    // Hide everything else
+    $('.container').hide();
+    $('.navbar').hide();
+    $('.balloons').hide();
+    $('#birthday-text-wrapper').hide();
+    
+    // Show gift question
+    $('#gift_container').fadeIn('slow');
+  });
+  
+  // Universal Yes button click logic (moves every click until 11th)
+let yesTapCount = 0;
+
+$('#yes_btn').on('click', function(){
+  yesTapCount++;
+
+  if (yesTapCount < 11) {
+    // First 10 clicks: move to random position
+    const containerWidth = $(window).width() - $(this).outerWidth();
+    const containerHeight = $(window).height() - $(this).outerHeight();
+    const randX = Math.floor(Math.random() * containerWidth);
+    const randY = Math.floor(Math.random() * containerHeight);
+
+    $(this).css({
+      position: 'absolute',
+      left: randX + 'px',
+      top: randY + 'px'
+    });
+  }
+  else if (yesTapCount === 11) {
+    // 11th click: grow big and stop moving
+    $(this).css({
+      position: 'static',
+      transform: 'scale(1.5)',
+      fontSize: '1.5em',
+      left: '',
+      top: ''
+    });
+
+    // Remove this click handler
+    $(this).off('click');
+
+    // Bind final click to show gifts
+    $(this).on('click', function(){
+      $('#gift_container').hide();
+      $('#gift_boxes').fadeIn('slow');
+    });
+  }
+});
+$('#no_btn').click(function(){
+    $('#gift_container').html(`
+      <div id="no_response">
+        <p>Ok 😆</p>
+        <button id="exit_button" class="btn btn-danger">Exit</button>
+      </div>
+    `);
+  
+    // Optional: fade it in
+    $('#no_response').hide().fadeIn(500);
+  });
+  // Delegate click to the dynamically created Exit button
+$(document).on('click', '#exit_button', function(){
+    location.reload();
+  });
+  
+
+// Click on gift box
+$('.gift-box').click(function(){
+  const gifts = {
+    car: '🚗 Brand New Car!',
+    house: '🏠 Beautiful House!',
+    iphone: '📱 iPhone 15 Pro!',
+    macbook: '💻 MacBook Pro!',
+    samsung: '📱 Samsung S25 Ultra!',
+    audi: '🚘 Audi Car!',
+    laptop: '💻 Powerful Laptop!',
+    burj: '🏙️ Burj Khalifa!',
+    taj: '🕌 Taj Mahal Trip!'
+  };
+  const selectedGift = $(this).data('gift');
+  $('#gift_boxes').hide();
+  $('#gift_name').text(gifts[selectedGift]);
+  $('#gift_reveal').fadeIn('slow');
+});
+
+// Claim button click
+$('#claim_gift').click(function(){
+  $('#gift_reveal').hide();
+  $('#fool_message').fadeIn('slow');
+});
+
+// Exit button click
+$('#exit_button').click(function(){
+  location.reload(); // Reload the page
+});
 
     $('#story').click(function(){
         $(this).fadeOut('slow');
