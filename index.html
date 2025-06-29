@@ -31,12 +31,14 @@
         <source src="hbd.mp3" />
         Your browser isn't invited for super fun audio time.
     </audio>
- <video id="cakeCutVideo"
+
+    <video id="cakeCutVideo"
        src="cake_cut_animation.mp4"
        muted
        preload="auto"
        class="cake-cut-video"
        playsinline></video>
+
 
     <div class="blur-when-video-plays">
         <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">S</h2></div>
@@ -81,9 +83,9 @@
                     <div class="cobertura"></div>
                     <div class="bizcocho"></div>
                 </div>
-                   <div class="blur-when-video-plays">
+                <div class="blur-when-video-plays">
                 <img src="girl.png" class="girl-image hide hide-during-video" id="girl_image">
-                </div>        
+            </div>
             </div>
         </div>
 
@@ -155,12 +157,48 @@
                     <button class="btn btn-primary hide-during-video" id="light_candle"> Light Candle</button>
                     <button class="btn btn-primary hide hide-during-video" id="cut_the_cake">Cut The Cake</button>
                     <button class="btn btn-primary hide-during-video" id="wish_message">Happy Birthday</button>
+                    <button class="btn btn-primary hide-during-video" id="gift_button">Gift 🎁</button>
+
                     <!-- Removed #story button as requested -->
                 </div>
             </div>
         </div>
     </div>
 
+    <div id="gift_container" style="display:none; text-align:center; margin-top:30px;">
+        <p style="font-size:1.5em; color:white;">Do you want Gift?</p>
+        <button id="yes_btn" class="btn btn-success">Yes</button>
+        <button id="no_btn" class="btn btn-danger">No</button>
+      </div>
+    <!-- Grid of gift boxes -->
+<div id="gift_boxes" style="display:none; text-align:center; margin-top:30px;">
+    <p style="font-size:1.5em; color:white;">Select Your Gift 🎁</p>
+    <div id="gift_grid">
+      <!-- 9 boxes -->
+      <div class="gift-box" data-gift="car">🎁</div>
+      <div class="gift-box" data-gift="house">🎁</div>
+      <div class="gift-box" data-gift="iphone">🎁</div>
+      <div class="gift-box" data-gift="macbook">🎁</div>
+      <div class="gift-box" data-gift="samsung">🎁</div>
+      <div class="gift-box" data-gift="audi">🎁</div>
+      <div class="gift-box" data-gift="laptop">🎁</div>
+      <div class="gift-box" data-gift="burj">🎁</div>
+      <div class="gift-box" data-gift="taj">🎁</div>
+    </div>
+  </div>
+  
+  <!-- Gift reveal container -->
+  <div id="gift_reveal" style="display:none">
+    <p id="gift_name" style="font-size:1.5em; color:white;"></p>
+    <button id="claim_gift" class="btn btn-success">Claim</button>
+  </div>
+  
+  <!-- Fool message -->
+  <div id="fool_message" style="display:none; text-align:center; margin-top:30px;">
+    <p style="font-size:3em; color:red; font-weight:bold;">जब कमाना तब खरीद लेना 😂</p>
+    <button id="exit_button" class="btn btn-danger">Exit</button>
+  </div>
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
     <script src="effect.js"></script>
@@ -173,5 +211,7 @@
       ga('create', 'UA-58229732-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+  
 </body>
 </html>
