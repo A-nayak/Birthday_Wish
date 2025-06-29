@@ -148,46 +148,44 @@ $('document').ready(function(){
     
     $('#cut_the_cake').click(function () {
         $(this).fadeOut('slow');
-    
+      
         const video = document.getElementById('cakeCutVideo');
-        video.playbackRate = 0.75; // ✅ Set playback speed to 0.75x
+        video.playbackRate = 0.75;
+      
+        // ✅ ADD BLUR by adding class to <body>
+        $('body').addClass('video-playing');
+      
         $('#cakeCutVideo').removeClass('hide').fadeIn('slow');
+        video.classList.add('zoomed');
         video.play();
-    
-        $('#wish_message').removeClass('hide').fadeIn('slow');
-    });
-    
-    document.getElementById('cakeCutVideo').addEventListener('ended', function () {
+      });
+      
+      document.getElementById('cakeCutVideo').addEventListener('ended', function () {
         $('#cakeCutVideo').fadeOut('slow');
-    });
+      
+        // ✅ REMOVE BLUR
+        $('body').removeClass('video-playing');
+      
+        $('#wish_message').removeClass('hide').fadeIn('slow');
+      });
+      
     
-
-    $('#wish_message').click(function(){
-         vw = $(window).width()/2;
-
-        $('#b1,#b2,#b3,#b4,#b5,#b6,#b7,#b8').stop();
-        $('#b1').attr('id','b11');
-        $('#b2').attr('id','b22')
-        $('#b3').attr('id','b33')
-        $('#b4').attr('id','b44')
-        $('#b5').attr('id','b55')
-        $('#b6').attr('id','b66')
-        $('#b7').attr('id','b77')
-        $('#b8').attr('id','b88')
-        $('#b11').animate({top:240, left: vw-350},500);
-        $('#b22').animate({top:240, left: vw-250},500);
-        $('#b33').animate({top:240, left: vw-150},500);
-        $('#b44').animate({top:240, left: vw-50},500);
-        $('#b55').animate({top:240, left: vw+50},500);
-        $('#b66').animate({top:240, left: vw+150},500);
-        $('#b77').animate({top:240, left: vw+250},500);
-        $('#b88').animate({top:240, left: vw+350},500);
-        $('.balloons').css('opacity','0.9');
-        $('.balloons h2').fadeIn(3000);
-        $(this).fadeOut('slow').delay(3000).promise().done(function(){
-            $('#story').fadeIn('slow');
-        });
-    });
+      $('#wish_message').click(function () {
+        $(this).fadeOut('slow');
+      
+        // Hide the cake
+        $('.cake-cover').fadeOut('slow');
+      
+        // Reuse existing blur logic
+        $('body').addClass('video-playing');
+      
+        // Show birthday text
+        setTimeout(function () {
+          $('#birthday-text-wrapper').fadeIn('slow');
+        }, 600);
+      });
+      
+      
 
     $('#story').click(function(){
         $(this).fadeOut('slow');

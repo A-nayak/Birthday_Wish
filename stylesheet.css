@@ -1468,18 +1468,114 @@
 
 /* Style for the video overlay */
 .cake-cut-video {
-    position: fixed; /* Keep it in place even if you scroll */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Precisely center the video */
-    width: 60vmin; /* Responsive width: 60% of viewport's smaller dimension */
-    height: 60vmin; /* Makes it a perfect square (for a perfect circle) */
-    max-width: 500px; /* Limits its maximum size */
-    max-height: 500px;
-    border-radius: 100%; /* Makes the video area perfectly round */
-    object-fit: cover;  /* Ensures video fills the circle without stretching */
-    z-index: 999; /* Makes sure the video appears on top of everything */
-    display: none; /* Keep it hidden until JavaScript shows it */
-    background-color: black; /* Optional: A black background to fill edges */
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* fills whole screen */
+    z-index: 999;
+    display: none;
 }
+
+.cake-cut-video.zoomed {
+	transform: scale(1.2);           /* 👈 Zoom effect */
+	transform-origin: center center; /* Keep zoom centered */
+  }
+
+
+
+@media (max-width: 600px) {
+	.cake-cut-video {
+	  width: 95vw;
+	  max-width: 95vw;
+	}
+  }
+  
 /* Add more if needed */
+body.video-playing .blur-when-video-plays {
+	filter: blur(8px);
+	transition: filter 0.5s ease;
+  }
+  
+
+  /* Base heading style (white + glow) */
+  
+
+  #birthday-text-wrapper * {
+	box-sizing: border-box;
+  }
+  #birthday-text-wrapper .container {
+	font-family: 'Comic Sans MS', cursive, sans-serif;
+	text-align: center;
+	padding: 30px;
+	position: relative;
+	z-index: 1;
+  }
+
+  .word {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 10px 0;
+  }
+  .letter {
+	font-size: 3.5rem;
+	font-family: 'Fredoka', sans-serif;
+	color: #fff;
+	padding: 10px 15px;
+	border-radius: 10px;
+	text-shadow: 2px 2px 0 #00000055;
+	font-weight: normal;
+	animation: pop 0.4s ease-in-out forwards;
+	opacity: 0;
+  }
+  .letter:nth-child(1)  { animation-delay: 0.1s; }
+  .letter:nth-child(2)  { animation-delay: 0.2s; }
+  .letter:nth-child(3)  { animation-delay: 0.3s; }
+  /* Add more delays if needed */
+  
+  @keyframes pop {
+	to {
+	  transform: scale(1.05);
+	  opacity: 1;
+	}
+  }
+  .confetti {
+	width: 10px;
+	height: 10px;
+	background: #f39c12;
+	position: absolute;
+	top: -20px;
+	animation: fall 6s infinite linear;
+	opacity: 0.7;
+  }
+  @keyframes fall {
+	0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+	100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+  .balloon {
+	width: 40px;
+	height: 60px;
+	border-radius: 50%;
+	position: absolute;
+	top: 10%;
+	animation: float 6s ease-in-out infinite;
+  }
+  .balloon::after {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 40px;
+	background: #444;
+	top: 60px;
+	left: 50%;
+	transform: translateX(-50%);
+  }
+  @keyframes float {
+	0%, 100% { transform: translateY(0); }
+	50%      { transform: translateY(-25px); }
+  }
+  
+  
