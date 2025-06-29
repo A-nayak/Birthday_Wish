@@ -1471,22 +1471,22 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center horizontally & vertically */
+    transform: translate(-50%, -50%); /* perfectly center it */
 
-    width: 90vmin;       /* Responsive square based on smaller dimension */
+    width: 90vmin;       /* responsive square: 90% of the smaller dimension */
     height: 90vmin;
-    max-width: 500px;
+    max-width: 500px;    /* limits size on large screens */
     max-height: 500px;
 
-    object-fit: cover;
-    border-radius: 30px;
+    object-fit: cover;   /* ensures video fills the box */
+    border-radius: 25px; /* smooth rounded corners */
     background-color: black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 
     z-index: 999;
-    display: none;
-
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    display: none;       /* hidden until shown by JS */
 }
+
 
 
 @media (max-width: 600px) {
