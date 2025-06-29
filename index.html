@@ -1,222 +1,346 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Happy Birthday</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Happy Birthday Xola">
-    <meta name="robots" content="index, follow" />
-    <link rel="author" href="https://plus.google.com/u/1/+AyushSharma1/" />
-    <meta name="keywords" content="Birthday, Happy">
-    <meta property="og:type" content="E-Greeting" />
-    <meta property="og:image" content="favicon.ico" />
-    <meta property="og:description" content="Wish you a very Happy Birthday">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="loading.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+$(window).load(function(){
+    $('.loading').fadeOut('fast');
+    $('.container').fadeIn('fast');
+});
+$('document').ready(function(){
+        var vw;
+        $(window).resize(function(){
+             vw = $(window).width()/2;
+            $('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+            $('#b11').animate({top:240, left: vw-350},500);
+            $('#b22').animate({top:240, left: vw-250},500);
+            $('#b33').animate({top:240, left: vw-150},500);
+            $('#b44').animate({top:240, left: vw-50},500);
+            $('#b55').animate({top:240, left: vw+50},500);
+            $('#b66').animate({top:240, left: vw+150},500);
+            $('#b77').animate({top:240, left: vw+250},500);
+        });
 
-    <link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet/less" href="cake.less">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
-</head>
+    $('#turn_on').click(function(){
+        $('#bulb_yellow').addClass('bulb-glow-yellow');
+        $('#bulb_red').addClass('bulb-glow-red');
+        $('#bulb_blue').addClass('bulb-glow-blue');
+        $('#bulb_green').addClass('bulb-glow-green');
+        $('#bulb_pink').addClass('bulb-glow-pink');
+        $('#bulb_orange').addClass('bulb-glow-orange');
+        $('body').addClass('peach');
+        $(this).fadeOut('slow').delay(5000).promise().done(function(){
+            $('#play').fadeIn('slow');
+        });
+    });
+    $('#play').click(function(){
+        var audio = $('.song')[0];
+        audio.play();
+        $('#bulb_yellow').addClass('bulb-glow-yellow-after');
+        $('#bulb_red').addClass('bulb-glow-red-after');
+        $('#bulb_blue').addClass('bulb-glow-blue-after');
+        $('#bulb_green').addClass('bulb-glow-green-after');
+        $('#bulb_pink').addClass('bulb-glow-pink-after');
+        $('#bulb_orange').addClass('bulb-glow-orange-after');
+        $('body').css('backgroud-color','#FFF');
+        $('body').addClass('peach-after');
+        $(this).fadeOut('slow').delay(6000).promise().done(function(){
+            $('#bannar_coming').fadeIn('slow');
+        });
+    });
 
-<body>
-    <div class="loading"></div>
+    $('#bannar_coming').click(function(){
+        $('.bannar').addClass('bannar-come');
+        // --- ADDED THIS LINE TO SHOW THE GIRL'S IMAGE ---
+        $('#girl_image').removeClass('hide').addClass('show');
+        // -------------------------------------------------
+        $(this).fadeOut('slow').delay(6000).promise().done(function(){
+            $('#balloons_flying').fadeIn('slow');
+        });
+    });
 
-    <audio class="song" controls loop>
-        <source src="hbd.mp3" />
-        Your browser isn't invited for super fun audio time.
-    </audio>
+    function loopOne() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b1').animate({left:randleft,bottom:randtop},10000,function(){
+            loopOne();
+        });
+    }
+    function loopTwo() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b2').animate({left:randleft,bottom:randtop},10000,function(){
+            loopTwo();
+        });
+    }
+    function loopThree() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b3').animate({left:randleft,bottom:randtop},10000,function(){
+            loopThree();
+        });
+    }
+    function loopFour() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b4').animate({left:randleft,bottom:randtop},10000,function(){
+            loopFour();
+        });
+    }
+    function loopFive() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b5').animate({left:randleft,bottom:randtop},10000,function(){
+            loopFive();
+        });
+    }
 
-    <video id="cakeCutVideo"
-       src="cake_cut_animation.mp4"
-       muted
-       preload="auto"
-       class="cake-cut-video"
-       playsinline></video>
+    function loopSix() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b6').animate({left:randleft,bottom:randtop},10000,function(){
+            loopSix();
+        });
+    }
+    function loopSeven() {
+        var randleft = 1000*Math.random();
+        var randtop = 500*Math.random();
+        $('#b7').animate({left:randleft,bottom:randtop},10000,function(){
+            loopSeven();
+        });
+    }
+
+    $('#balloons_flying').click(function(){
+        $('.balloon-border').animate({top:-500},8000);
+        $('#b1,#b4,#b5,#b7').addClass('balloons-rotate-behaviour-one');
+        $('#b2,#b3,#b6').addClass('balloons-rotate-behaviour-two');
+        // $('#b3').addClass('balloons-rotate-behaviour-two');
+        // $('#b4').addClass('balloons-rotate-behaviour-one');
+        // $('#b5').addClass('balloons-rotate-behaviour-one');
+        // $('#b6').addClass('balloons-rotate-behaviour-two');
+        // $('#b7').addClass('balloons-rotate-behaviour-one');
+        loopOne();
+        loopTwo();
+        loopThree();
+        loopFour();
+        loopFive();
+        loopSix();
+        loopSeven();
+
+        $(this).fadeOut('slow').delay(5000).promise().done(function(){
+            $('#cake_fadein').fadeIn('slow');
+        });
+    });
+
+    $('#cake_fadein').click(function(){
+        $('.cake').fadeIn('slow');
+        $(this).fadeOut('slow').delay(3000).promise().done(function(){
+            $('#light_candle').fadeIn('slow');
+        });
+    });
+
+    $('#light_candle').click(function () {
+        $(this).fadeOut('slow'); // hide this button
+    
+        $('.fuego').fadeIn('slow'); // start showing flames
+    
+        // In 1.2 seconds, show the Cut the Cake button no matter what
+        setTimeout(function () {
+            $('#cut_the_cake').removeClass('hide').fadeIn('slow');
+        }, 1200);
+    });
+    
+    
+    $('#cut_the_cake').click(function () {
+        $(this).fadeOut('slow');
+      
+        const video = document.getElementById('cakeCutVideo');
+        video.playbackRate = 0.75;
+      
+        // ✅ ADD BLUR by adding class to <body>
+        $('body').addClass('video-playing');
+      
+        $('#cakeCutVideo').removeClass('hide').fadeIn('slow');
+        video.classList.add('zoomed');
+        video.play();
+      });
+      
+      document.getElementById('cakeCutVideo').addEventListener('ended', function () {
+        $('#cakeCutVideo').fadeOut('slow');
+      
+        // ✅ REMOVE BLUR
+        $('body').removeClass('video-playing');
+      
+        $('#wish_message').removeClass('hide').fadeIn('slow');
+      });
+      
+    
+      $('#wish_message').click(function () {
+        $(this).fadeOut('slow');
+      
+        // Hide the cake
+        $('.cake-cover').fadeOut('slow');
+      
+        // Reuse existing blur logic
+        $('body').addClass('video-playing');
+      
+        // Show birthday text
+        setTimeout(function () {
+          $('#birthday-text-wrapper').fadeIn('slow');
+          $('#gift_button').fadeIn('slow'); 
+        }, 600);
+      });
+      
+      // GIFT BUTTON CLICK HANDLER
+$('#gift_button').click(function(){
+    // Hide everything else
+    $('.container').hide();
+    $('.navbar').hide();
+    $('.balloons').hide();
+    $('#birthday-text-wrapper').hide();
+    
+    // Show gift question
+    $('#gift_container').fadeIn('slow');
+  });
+  
+  // Universal Yes button click logic (moves every click until 11th)
+let yesTapCount = 0;
 
 
-    <div class="blur-when-video-plays">
-        <div class="balloons text-center" id="b1"><h2 style="color:#F2B300;">S</h2></div>
-        <div class="balloons text-center" id="b2"><h2 style="color:#0719D4;">H</h2></div>
-        <div class="balloons text-center" id="b3"><h2 style="color:#D14D39;">I</h2></div>
-        <div class="balloons text-center" id="b4"><h2 style="color:#8FAD00;">V</h2></div>
-        <div class="balloons text-center" id="b5"><h2 style="color:#8377E4;">A</h2></div>
-        <div class="balloons text-center" id="b6"><h2 style="color:#99C96A;">N</h2></div>
-        <div class="balloons text-center" id="b7"><h2 style="color:#20CFB4;">Y</h2></div>
-        <div class="balloons text-center" id="b8"><h2 style="color:#20CFB4;">A</h2></div>
-        <img src="Balloon-Border.png" width="100%" class="balloon-border">
-    </div>
-   
-    <div class="container">
-        <div class="blur-when-video-plays">
-        <div class="row">
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_yellow"></div></div>
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_red"></div></div>
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_blue"></div></div>
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_green"></div></div>
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_pink"></div></div>
-            <div class="col-md-2 col-xs-2 bulb-holder hide-during-video"><div class="bulb" id="bulb_orange"></div></div>
-        </div>
-    </div>
-    <div class="blur-when-video-plays">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="banner.png" class="bannar">
-            </div>
-        </div>
-    </div>
-        <div class="row cake-cover hide-during-video">
-            <div class="col-md-12 text-center">
-                <div class="cake">
-                    <div class="velas">
-                        <div class="fuego"></div>
-                        <div class="fuego"></div>
-                        <div class="fuego"></div>
-                        <div class="fuego"></div>
-                        <div class="fuego"></div>
-                    </div>
-                    <div class="cobertura"></div>
-                    <div class="bizcocho"></div>
-                </div>
-                <div class="blur-when-video-plays">
-                <img src="girl.png" class="girl-image hide hide-during-video" id="girl_image">
-            </div>
-            </div>
-        </div>
+const yesColors = [
+  "#e74c3c",
+  "#f39c12",
+  "#f1c40f",
+  "#2ecc71",
+  "#1abc9c",
+  "#3498db",
+  "#9b59b6",
+  "#e67e22",
+  "#d35400",
+  "#c0392b"
+];
 
-        <!-- Optional: You can remove this block if you don’t use the story -->
-        <!--
-        <div class="row message hide-during-video">
-            <div class="col-md-12">
-                <p>Today is...</p>
-                <p>as beautiful as other days</p>
-            </div>
-        </div>
-        -->
+$('#yes_btn').on('click', function(){
+  yesTapCount++;
 
-        <!-- Final stylish greeting -->
-        <div class="row" id="birthday-text-wrapper" style="display:none;">
-            <div class="scallop top"></div>
-  <div class="scallop bottom"></div>
+  if (yesTapCount < 11) {
+    // Shrink progressively
+    const scaleValue = 1 - (yesTapCount * 0.07);
 
-  <!-- Balloons -->
-  <div class="balloon" style="background:#e74c3c; left:15%; animation-delay: 0s;"></div>
-  <div class="balloon" style="background:#3498db; left:70%; animation-delay: 1.5s;"></div>
+    // Change background color
+    const newColor = yesColors[yesTapCount - 1] || "#555";
 
-  <!-- Confetti -->
-  <div class="confetti" style="left:10%; background:#e67e22; animation-delay: 0s;"></div>
-  <div class="confetti" style="left:35%; background:#2ecc71; animation-delay: 1s;"></div>
-  <div class="confetti" style="left:60%; background:#9b59b6; animation-delay: 2s;"></div>
-  <div class="confetti" style="left:80%; background:#f1c40f; animation-delay: 3s;"></div>
+    $(this).css({
+      transform: `scale(${scaleValue})`,
+      backgroundColor: newColor,
+      color: "white"
+    });
 
-  <!-- Main text block -->
-  <div class="container">
-    <div class="party-hat"></div>
+    // Random position
+    const containerWidth = $(window).width() - $(this).outerWidth();
+    const containerHeight = $(window).height() - $(this).outerHeight();
+    const randX = Math.floor(Math.random() * containerWidth);
+    const randY = Math.floor(Math.random() * containerHeight);
 
-    <div class="word">
-      <span class="letter" style="background:#f39c12;">H</span>
-      <span class="letter" style="background:#e74c3c;">A</span>
-      <span class="letter" style="background:#2ecc71;">P</span>
-      <span class="letter" style="background:#9b59b6;">P</span>
-      <span class="letter" style="background:#3498db;">Y</span>
-    </div>
-    <div class="word">
-      <span class="letter" style="background:#e67e22;">B</span>
-      <span class="letter" style="background:#1abc9c;">I</span>
-      <span class="letter" style="background:#f1c40f;">R</span>
-      <span class="letter" style="background:#2ecc71;">T</span>
-      <span class="letter" style="background:#9b59b6;">H</span>
-      <span class="letter" style="background:#e74c3c;">D</span>
-      <span class="letter" style="background:#3498db;">A</span>
-      <span class="letter" style="background:#f39c12;">Y</span>
-    </div>
-    <div class="word">
-      <span class="letter" style="background:#f39c12;">B</span>
-      <span class="letter" style="background:#2ecc71;">A</span>
-      <span class="letter" style="background:#e74c3c;">H</span>
-      <span class="letter" style="background:#3498db;">I</span>
-      <span class="letter" style="background:#9b59b6;">N</span>
-      <span class="letter" style="background:#f1c40f;">I</span>
-    </div>
-  </div>
-        </div>
+    $(this).css({
+      position: 'absolute',
+      left: randX + 'px',
+      top: randY + 'px'
+    });
+  }
+  else if (yesTapCount === 11) {
+    // Grow big and final color
+    $(this).css({
+      position: 'static',
+      transform: 'scale(2)',
+      fontSize: '3em',
+      backgroundColor: '#00c853',
+      color: 'white',
+      left: '',
+      top: ''
+    });
 
-        <div class="navbar navbar-fixed-bottom">
-            <div class="row">
-                <div class="col-md-6 text-center col-md-offset-3">
-                    <button class="btn btn-primary hide-during-video" id="turn_on">Turn On Lights</button>
-                    <button class="btn btn-primary hide-during-video" id="play">Play Music</button>
-                    <button class="btn btn-primary hide-during-video" id="bannar_coming">Let's Decorate</button>
-                    <button class="btn btn-primary hide-during-video" id="balloons_flying">Fly With Balloons</button>
-                    <button class="btn btn-primary hide-during-video" id="cake_fadein">Most Delicious Cake Ever</button>
-                    <button class="btn btn-primary hide-during-video" id="light_candle"> Light Candle</button>
-                    <button class="btn btn-primary hide hide-during-video" id="cut_the_cake">Cut The Cake</button>
-                    <button class="btn btn-primary hide-during-video" id="wish_message">Happy Birthday</button>
-                    <button class="btn btn-primary hide-during-video" id="gift_button">Gift 🎁</button>
+    // Remove old click handler
+    $(this).off('click');
 
-                    <!-- Removed #story button as requested -->
-                </div>
-            </div>
-        </div>
-    </div>
+    // Bind final click to show gifts
+    $(this).on('click', function(){
+      $('#gift_container').hide();
+      $('#gift_boxes').fadeIn('slow');
+    });
+  }
+});
 
-    <div id="gift_container" style="display:none; text-align:center; margin-top:30px;">
-        <p style="font-size:1.5em; color:white;">Do you want Gift?</p>
-        <button id="yes_btn" class="btn btn-success">Yes</button>
-        <button id="no_btn" class="btn btn-danger">No</button>
+
+$('#no_btn').click(function(){
+    $('#gift_container').html(`
+      <div id="no_response">
+        <p>Ok 😆</p>
+        <button id="exit_button" class="btn btn-danger">Exit</button>
       </div>
-    <!-- Grid of gift boxes -->
-<div id="gift_boxes" style="display:none; text-align:center; margin-top:30px;">
-    <p style="font-size:1.5em; color:white;">Select Your Gift 🎁</p>
-    <div id="gift_grid">
-      <!-- 9 boxes -->
-      <div class="gift-box" data-gift="car">🎁</div>
-      <div class="gift-box" data-gift="house">🎁</div>
-      <div class="gift-box" data-gift="iphone">🎁</div>
-      <div class="gift-box" data-gift="macbook">🎁</div>
-      <div class="gift-box" data-gift="samsung">🎁</div>
-      <div class="gift-box" data-gift="audi">🎁</div>
-      <div class="gift-box" data-gift="laptop">🎁</div>
-      <div class="gift-box" data-gift="burj">🎁</div>
-      <div class="gift-box" data-gift="taj">🎁</div>
-    </div>
-  </div>
+    `);
   
-  <!-- Gift reveal container -->
-  <div id="gift_reveal" style="display:none">
-    <p id="gift_name" style="font-size:1.5em; color:white;"></p>
-    <button id="claim_gift" class="btn btn-success">Claim</button>
-  </div>
+    // Optional: fade it in
+    $('#no_response').hide().fadeIn(500);
+  });
+  // Delegate click to the dynamically created Exit button
+$(document).on('click', '#exit_button', function(){
+    location.reload();
+  });
   
-  <!-- Fool message -->
-  <div id="fool_message" style="display:none; text-align:center; margin-top:30px;">
-    <p style="font-size:3em; color:red; font-weight:bold;">जब कमाना तब खरीद लेना 😂</p>
-    <button id="exit_button" class="btn btn-danger">Exit</button>
-  </div>
-  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="effect.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-58229732-1', 'auto');
-      ga('send', 'pageview');
-    </script>
+// Click on gift box
+$('.gift-box').click(function(){
+  const gifts = {
+    car: '🚗 Brand New Car!',
+    house: '🏠 Beautiful House!',
+    iphone: '📱 iPhone 15 Pro!',
+    macbook: '💻 MacBook Pro!',
+    samsung: '📱 Samsung S25 Ultra!',
+    audi: '🚘 Audi Car!',
+    laptop: '💻 Laptop!',
+    burj: '🏙️ Burj Khalifa!',
+    taj: '🕌 Taj Mahal!'
+  };
+  const selectedGift = $(this).data('gift');
+  $('#gift_boxes').hide();
+  $('#gift_name').text(gifts[selectedGift]);
+  $('#gift_reveal').fadeIn('slow');
+});
 
-  
-<a id="github-link" href="https://github.com/A-nayak" target="_blank" aria-label="GitHub">
-    <svg height="24" width="24" viewBox="0 0 16 16" fill="white" aria-hidden="true">
-        <path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49C4 13.91 3.48 12.81 3.34 12.3c-.09-.23-.48-.95-.82-1.14-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.2 1.87.86 2.33.66.07-.52.28-.86.5-1.06-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.01.08-2.12 0 0 .67-.21 2.2.82a7.56 7.56 0 012-.27c.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"></path>
-      </svg>
-  </a>
-</body>
-</html>
+// Claim button click
+$('#claim_gift').click(function(){
+  $('#gift_reveal').hide();
+  $('#fool_message').fadeIn('slow');
+});
+
+// Exit button click
+$('#exit_button').click(function(){
+  location.reload(); // Reload the page
+});
+
+    $('#story').click(function(){
+        $(this).fadeOut('slow');
+        $('.cake').fadeOut('fast').promise().done(function(){
+            $('.message').fadeIn('slow');
+        });
+
+        var i;
+
+        function msgLoop (i) {
+            $("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+            i=i+1;
+            $("p:nth-child("+i+")").fadeIn('slow').delay(1000);
+            if(i==50){
+                $("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+                    $('.cake').fadeIn('fast');
+                });
+
+            }
+            else{
+                msgLoop(i);
+            }
+
+        });
+            // body...
+        }
+
+        msgLoop(0);
+
+    });
+});
