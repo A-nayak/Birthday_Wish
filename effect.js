@@ -248,7 +248,7 @@ $('#yes_btn').on('click', function(){
     $(this).css({
       position: 'static',
       transform: 'scale(2)',
-      fontSize: '1.5em',
+      fontSize: '3em',
       backgroundColor: '#00c853',
       color: 'white',
       left: '',
@@ -304,9 +304,34 @@ $('.gift-box').click(function(){
 });
 
 // Claim button click
+// Claim button click
 $('#claim_gift').click(function(){
-  $('#gift_reveal').hide();
-  $('#fool_message').fadeIn('slow');
+  // Hide the claim button
+  $('#claim_gift').hide();
+
+  // Show the progress bar
+  $('#progress_container').fadeIn('fast');
+
+  let progress = 0;
+
+  function updateProgress() {
+    progress += 10;
+    $('#progress_bar_inner').css('width', progress + '%');
+    $('#progress_text').text('Loading... ' + progress + '%');
+
+    if (progress < 100) {
+      setTimeout(updateProgress, 1500);
+    } else {
+      // When complete, hide progress and show fool message
+      $('#progress_container').fadeOut('slow', function(){
+        $('#gift_reveal').fadeOut('fast', function(){
+          $('#fool_message').fadeIn('slow');
+        });
+      });
+    }
+  }
+
+  updateProgress();
 });
 
 // Exit button click
