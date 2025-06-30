@@ -306,33 +306,53 @@ $('.gift-box').click(function(){
 // Claim button click
 // Claim button click
 $('#claim_gift').click(function(){
-  // Hide the claim button
   $('#claim_gift').hide();
-
-  // Show the progress bar
   $('#progress_container').fadeIn('fast');
 
   let progress = 0;
 
   function updateProgress() {
     progress += 10;
+
+    if (progress >= 100) {
+      progress = 100;
+    }
+
     $('#progress_bar_inner').css('width', progress + '%');
     $('#progress_text').text('Loading... ' + progress + '%');
 
-    if (progress < 100) {
+    if (progress < 90) {
+      // Keep incrementing every 1 second up to 90%
       setTimeout(updateProgress, 1500);
-    } else {
-      // When complete, hide progress and show fool message
-      $('#progress_container').fadeOut('slow', function(){
-        $('#gift_reveal').fadeOut('fast', function(){
-          $('#fool_message').fadeIn('slow');
-        });
-      });
+    } else if (progress === 90) {
+      // Next step: jump to 99%
+      setTimeout(function(){
+        progress = 99;
+        $('#progress_bar_inner').css('width', progress + '%');
+        $('#progress_text').text('Loading... ' + progress + '%');
+
+        // Wait 10 seconds at 99%
+        setTimeout(function(){
+          progress = 100;
+          $('#progress_bar_inner').css('width', progress + '%');
+          $('#progress_text').text('Loading... ' + progress + '%');
+
+          // Now show the prank message
+          $('#progress_container').fadeOut('slow', function(){
+            $('#gift_reveal').fadeOut('fast', function(){
+              $('#fool_message').fadeIn('slow');
+            });
+          });
+        }, 20000); // 10,000 milliseconds = 10 sec
+
+      }, 1000);
     }
   }
 
   updateProgress();
 });
+
+
 
 // Exit button click
 $('#exit_button').click(function(){
