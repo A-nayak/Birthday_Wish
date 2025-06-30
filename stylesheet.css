@@ -1774,6 +1774,24 @@ body.video-playing .blur-when-video-plays {
 }
 
   
+  #progress_bar_outer {
+	width: 300px;
+	height: 20px;
+	background: #555;
+	border-radius: 10px;
+	overflow: hidden;
+	margin: 0 auto;
+  }
+  
+  #progress_bar_inner {
+	height: 100%;
+	width: 0%;
+	background: #4caf50;
+	transition: width 0.4s ease;
+  }
+  
+  
+
   
   
 
